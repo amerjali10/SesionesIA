@@ -216,6 +216,24 @@ static int? JugarPartida(string[] palabras, Random aleatorio)
 
     while (true)
     {
+        bool palabraCompletada = palabra.All(caracter => letrasAdivinadas.Contains(QuitarTilde(caracter.ToString())));
+        if (palabraCompletada)
+        {
+            int puntos = (6 - errores) * 10 + palabra.Length;
+            Console.WriteLine();
+            Console.WriteLine($"¡Ganaste! La palabra era: {palabra}");
+            Console.WriteLine($"Puntos obtenidos: {puntos}");
+            return puntos;
+        }
+
+        if (errores >= 6)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"¡Perdiste! La palabra era: {palabra}");
+            Console.WriteLine("Puntos obtenidos: 0");
+            return 0;
+        }
+
         Console.WriteLine();
         MostrarDibujo(errores);
         Console.WriteLine($"Palabra: {PalabraOculta(palabra, letrasAdivinadas)}");
@@ -252,7 +270,7 @@ static int? JugarPartida(string[] palabras, Random aleatorio)
             Console.WriteLine($"¡Correcto! La letra '{letra.Value}' está en la palabra.");
         }
 
-        bool palabraCompletada = palabra.All(caracter => letrasAdivinadas.Contains(QuitarTilde(caracter.ToString())));
+        palabraCompletada = palabra.All(caracter => letrasAdivinadas.Contains(QuitarTilde(caracter.ToString())));
 
         if (palabraCompletada)
         {
