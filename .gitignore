@@ -1,0 +1,16 @@
+# Archivos que genera .NET al compilar (no se suben al repositorio)
+bin/
+obj/
+
+# Archivos de Visual Studio y configuración personal
+.vs/
+*.user
+*.suo
+
+# Configuración personal de VS Code (solo se comparte la lista de extensiones)
+.vscode/*
+!.vscode/extensions.json
+
+# Archivos del sistema operativo
+Thumbs.db
+.DS_Store
